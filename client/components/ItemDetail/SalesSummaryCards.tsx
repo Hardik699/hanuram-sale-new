@@ -133,7 +133,10 @@ interface SalesSummaryCardsProps {
     variations: Array<{ name: string; quantity: number; value: number }>;
   };
   saleType?: "QTY" | "KG";
+<<<<<<< HEAD
   selectedYear?: number;
+=======
+>>>>>>> origin/main
 }
 
 export default function SalesSummaryCards({
@@ -142,7 +145,10 @@ export default function SalesSummaryCards({
   diningData,
   parcelData,
   saleType = "QTY",
+<<<<<<< HEAD
   selectedYear,
+=======
+>>>>>>> origin/main
 }: SalesSummaryCardsProps) {
   return (
     <div>

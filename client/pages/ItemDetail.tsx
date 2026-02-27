@@ -46,6 +46,7 @@ export default function ItemDetail() {
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"details" | "sales">("details");
 
+<<<<<<< HEAD
   // Initialize with current year's date range
   const [selectedYear, setSelectedYear] = useState(() => new Date().getFullYear());
   const [dateRange, setDateRange] = useState(() => ({
@@ -60,6 +61,10 @@ export default function ItemDetail() {
       end: `${year}-12-31`
     });
   };
+=======
+  // Initialize with default date range (last 365 days) - only once on mount
+  const [dateRange, setDateRange] = useState(() => getDefaultDateRange());
+>>>>>>> origin/main
   const [selectedRestaurant, setSelectedRestaurant] = useState<string>("");
   const [restaurants, setRestaurants] = useState<string[]>([]);
   const [restaurantsLoading, setRestaurantsLoading] = useState(false);
@@ -563,7 +568,11 @@ export default function ItemDetail() {
             </div>
             <div>
               <h2 className="text-2xl font-black text-white tracking-tight capitalize">
+<<<<<<< HEAD
                 {activeTab === "details" ? "Product Specifications" : `Market Performance ${selectedYear}`}
+=======
+                {activeTab === "details" ? "Product Specifications" : "Market Performance"}
+>>>>>>> origin/main
               </h2>
               <p className="text-slate-300 text-sm font-medium mt-0.5">
                 {activeTab === "details" ? "Comprehensive item details and variations" : "Sales analytics and distribution data"}
@@ -720,6 +729,7 @@ export default function ItemDetail() {
               {/* Filter Area */}
               <div className="bg-gray-900/50 rounded-2xl p-6 border border-gray-800 shadow-inner">
                 <div className="space-y-4">
+<<<<<<< HEAD
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Year Selection */}
                   <div className="flex flex-col gap-2">
@@ -737,6 +747,8 @@ export default function ItemDetail() {
                     </select>
                   </div>
 
+=======
+>>>>>>> origin/main
                   {/* Restaurant Selection */}
                   <div className="flex flex-col gap-2">
                     <label className="text-xs font-black text-gray-500 uppercase tracking-widest">
@@ -753,7 +765,10 @@ export default function ItemDetail() {
                       ))}
                     </select>
                   </div>
+<<<<<<< HEAD
                 </div>
+=======
+>>>>>>> origin/main
 
                   {/* Date Range Selection */}
                   <div className="grid grid-cols-2 gap-3">
@@ -799,7 +814,10 @@ export default function ItemDetail() {
                     diningData={salesData.diningData}
                     parcelData={salesData.parcelData}
                     saleType={item?.variations?.[0]?.saleType || "QTY"}
+<<<<<<< HEAD
                     selectedYear={selectedYear}
+=======
+>>>>>>> origin/main
                   />
 
                   <div className="h-px bg-gray-800"></div>
@@ -808,8 +826,11 @@ export default function ItemDetail() {
                     monthlyData={salesData.monthlyData}
                     dateWiseData={salesData.dateWiseData}
                     restaurantSales={salesData.restaurantSales}
+<<<<<<< HEAD
                     selectedYear={selectedYear}
                     onYearChange={handleYearChange}
+=======
+>>>>>>> origin/main
                   />
 
                 </div>

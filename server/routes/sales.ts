@@ -393,6 +393,7 @@ export const handleGetItemSales: RequestHandler = async (req, res) => {
       parcel: {},
     };
 
+<<<<<<< HEAD
     const monthlyByArea: {
       [month: string]: {
         [area: string]: {
@@ -401,6 +402,9 @@ export const handleGetItemSales: RequestHandler = async (req, res) => {
         }
       }
     } = {};
+=======
+    const monthlyByArea: { [key: string]: { [area: string]: number } } = {};
+>>>>>>> origin/main
     const dailyByArea: { [key: string]: { [area: string]: number } } = {};
     const restaurantSales: { [key: string]: number } = {};
 
@@ -498,6 +502,7 @@ export const handleGetItemSales: RequestHandler = async (req, res) => {
         // Aggregate by month & area
         const month = recordDate.toISOString().substring(0, 7);
         if (!monthlyByArea[month]) monthlyByArea[month] = {};
+<<<<<<< HEAD
         if (!monthlyByArea[month][normalizedArea]) {
           monthlyByArea[month][normalizedArea] = { total: 0, variations: {} };
         }
@@ -505,6 +510,10 @@ export const handleGetItemSales: RequestHandler = async (req, res) => {
         monthlyByArea[month][normalizedArea].total += adjustedQuantity;
         monthlyByArea[month][normalizedArea].variations[variationName] =
           (monthlyByArea[month][normalizedArea].variations[variationName] || 0) + adjustedQuantity;
+=======
+        monthlyByArea[month][normalizedArea] =
+          (monthlyByArea[month][normalizedArea] || 0) + adjustedQuantity;
+>>>>>>> origin/main
 
         // Aggregate by day & area
         const day = recordDate.toISOString().substring(0, 10);
@@ -540,6 +549,7 @@ export const handleGetItemSales: RequestHandler = async (req, res) => {
       .sort(([monthA], [monthB]) => monthA.localeCompare(monthB))
       .map(([month, areas]) => ({
         month,
+<<<<<<< HEAD
         zomatoQty: areas.zomato?.total || 0,
         swiggyQty: areas.swiggy?.total || 0,
         diningQty: areas.dining?.total || 0,
@@ -553,6 +563,17 @@ export const handleGetItemSales: RequestHandler = async (req, res) => {
           (areas.swiggy?.total || 0) +
           (areas.dining?.total || 0) +
           (areas.parcel?.total || 0),
+=======
+        zomatoQty: areas.zomato || 0,
+        swiggyQty: areas.swiggy || 0,
+        diningQty: areas.dining || 0,
+        parcelQty: areas.parcel || 0,
+        totalQty:
+          (areas.zomato || 0) +
+          (areas.swiggy || 0) +
+          (areas.dining || 0) +
+          (areas.parcel || 0),
+>>>>>>> origin/main
       }));
 
     // Build daily chart data
